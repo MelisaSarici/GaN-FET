@@ -4,4 +4,31 @@
 []http://research.ijcaonline.org/icaet2016/number1/icaet030.pdf
   I downloaded and put this pdf in Github apart from this link. It describes how
   to model MOSFET in Simulink
-  
+
+
+Research Reading Summary on GaNFET Navita iDrive (29th April)
+
+  WBG GaN material allows high electric fields so high
+  carrier density can be achieved
+  50% less loss than RF Si
+  • 16x smaller package
+  • Air-core inductors
+  • Minimal FET loss
+  • Negligible gate drive loss
+
+  There are 3 different GaN Packages:
+  • Through-hole(this one has limited frequency due to high inductances)
+  • Cascode (high cost and additional components)
+  • PCB-embedded  (this one has high cost)
+
+  Monolithic GaN is better at overshoots, it suggests that it is
+  eliminating some losses like diode, Ton, charge discharge power losses?
+  Here Navitas İDrive says that they reduce the capacitances more than 10 times
+  drop the time constances whih will affect the charge discharge time(reducing it)
+  => switching improved!
+
+  • **(Learn) Turn-off losses are low due to powerful and
+parasitic-free(how?) drive integration with no overshoot
+
+  •A VERY IMPORTANT RESULT TO BE TESTED: Saying it needs no heat sink
+  runs cool while SiC counterparts run 30-50 deg. hotter and lossy
