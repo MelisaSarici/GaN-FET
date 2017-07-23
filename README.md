@@ -2,6 +2,9 @@
 GaN Modelling-Analysis Research League
 (New additions appearing on top)
 
+24.7.17(late correction)
+After some research in the library, I believe I found a proper way to connect the system and I think I managed to combine the mathematical and physical systems together using the block I created writing functions(as I described below in 24.7.17 before this last addition) I put the inductances in random to be corrected with detailed one after I confirm that this model works well.
+
 24.7.17
 Hocam şimdi ben bu modeli düzenledim ancak aklıma takılan çok önemli bir husus var ki bayağıdır içinden çıkamadım. Şöyle ki ben MOSFETi modellerken switching kısmı için bir matematiksel block yaratıyorum ve bu block içerisinde if blockları ile çalışıyor ve doğal olarak Id akımının bağlı olduğu constant Vt ve Kn ile değişken olan Vgs ve Vds değerlerini input olarak alıyor. Bu değerleri de doğal olarak fiziksel olan dünyadan yani elekriksel devreden alması gerekiyor.
 
