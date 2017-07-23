@@ -1,0 +1,29 @@
+.banner { Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 36px; Color : #000000; Text-decoration : normal; font-weight : normal; }
+.banner A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 36px; Color : #000000; Text-decoration : normal; font-weight : normal; }
+.banner A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 36px; Color : #ff0000; Text-decoration : normal; font-weight : normal; }
+
+H1 { Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 28px; Color : #000000; Text-decoration : normal; font-weight : normal; }
+
+H2{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 24px; Color : #000000; Text-decoration : normal; font-weight : normal; }
+H2 A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 24px; Color : #0000ff; Text-decoration : normal; font-weight : normal; }
+H2 A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 24px; Color : #ff0000; Text-decoration : normal; font-weight : normal; }
+
+H3{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 20px; Color : #000000; Text-decoration : normal; font-weight : normal; }
+H3 A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 20px; Color : #0000ff; Text-decoration : normal; font-weight : normal; }
+H3 A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 20px; Color : #ff0000; Text-decoration : normal; font-weight : normal; }
+
+P { Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #000000; Text-decoration : none; font-weight : normal; }
+P A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #0000ff; Text-decoration : none; font-weight : normal; }
+P A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Color : #ff0000; Font-Size : 14px; font-weight : normal; }
+
+TD { Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #000000; Text-decoration : none; font-weight : normal; }
+TD A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #0000ff; Text-decoration : none; font-weight : normal; }
+TD A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Color : #ff0000; Font-Size : 14px; font-weight : normal; }
+
+LI { Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #000000; Text-decoration : none; font-weight : normal; }
+LI A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #0000ff; Text-decoration : none; font-weight : normal; }
+LI A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Color : #ff0000; Font-Size : 14px; font-weight : normal; }
+
+DIR { Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #000000; Text-decoration : none; font-weight : normal; }
+DIR A{ Font-Family : Arial, Verdana, Geneva, sans-serif; Font-Size : 14px; Color : #0000ff; Text-decoration : none; font-weight : normal; }
+DIR A:HOVER{ Font-Family : Arial, Verdana, Geneva, sans-serif; Color : #ff0000; Font-Size : 14px; font-weight : normal; }

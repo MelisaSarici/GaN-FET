@@ -1,0 +1,12 @@
+document.write('<HTML>');
+document.write('<HEAD>');
+document.write('<LINK REL="STYLESHEET" TYPE="text/css" HREF="../java/cssfile.css">');
+document.write('</HEAD>');
+document.write('<TABLE BORDER="1" HEIGHT=80 WIDTH=700 cellspacing="0" cellpadding="0" align=center><TR><TD>');
+document.write('<TABLE BORDER="0" HEIGHT=80 WIDTH=700 cellspacing="0" cellpadding="0" align=center>');
+document.write('<TR><TD><img src="../graphics/c21.jpg" border=0><br><img src="../graphics/c3.jpg" border=0>');
+document.write('</TD><TD align=top valign=center class=banner BACKGROUND="../graphics/m_border.jpg">');
+document.write('<A HREF="../append/quick.htm" TITLE="Click here for quick access"><B><I>Principles of Semiconductor Devices</I></B></A></TD><TR><TD align=center valign=top BACKGROUND="../graphics/l_borderwhite.jpg">');
+document.write('<br><br><a href="../title.htm" TITLE="Title Page" NAME="Title Page"><img src="../graphics/titlea.jpg" border=0 ></a><br><a href="../toc1.htm" TITLE="Review of Modern Physics" NAME="Review of Modern Physics"><img src="../graphics/ch1.jpg" border=0 ></a><br><a href="../toc2.htm" TITLE="Semiconductor Physics" NAME="Semiconductor Physics"><img src="../graphics/ch2.jpg" border=0 ></a><br><a href="../toc3.htm" TITLE="Metal-Semiconductor Junctions" NAME="Metal-Semiconductor Junctions"><img src="../graphics/ch3.jpg" border=0 ></a><br><a href="../toc4.htm" TITLE="p-n Junctions" NAME="p-n Junctions"><img src="../graphics/ch4.jpg" border=0 ></a><br><a href="../toc5.htm" TITLE="Bipolar Junction Transistors" NAME="Bipolar Junction Transistors"><img src="../graphics/ch5.jpg" border=0 ></a><br><a href="../toc6.htm" TITLE="MOS Capacitors" NAME="MOS Capacitors"><img src="../graphics/ch6.jpg" border=0 ></a><br><a href="../toc7.htm" TITLE="MOSFETs" NAME="MOSFETs"><img src="../graphics/ch7.jpg" border=0 ></a><br><a href="../toca.htm" TITLE="Appendices" NAME="Appendices"><img src="../graphics/append.gif" border=0 ></a>');
+document.write('</TD><TD valign=top>');
+document.write('<TABLE BORDER=0 CELLSPACING=0 WIDTH=680><TR><TD align=left valign=bottom><p> <A HREF="../title.htm">Title Page</A> - <A HREF="../contents.htm">Table of Contents</A> - <A HREF="../help.htm">Help</A></TD><TD align=right valign=bottom><p><A HREF="../copyrigh.htm">© B. Van Zeghbroeck, 2011</A></TD></TR></TABLE>');
