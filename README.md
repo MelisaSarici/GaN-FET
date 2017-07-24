@@ -1,6 +1,12 @@
+
+
 # GaN-FET
 GaN Modelling-Analysis Research League
 (New additions appearing on top)
+
+24.7.17
+I arranged the blocks to their final position with the corresponding GaNFEt values that we are going to use(the ordered GaN parameters)and I was correcting the errors yet I had an error saying that an if block can only be connected to one action subblock not more than one. Does this mean that I can not create nested if block in Simulink? If so, shame! This would be so helpful for me to create the model!
+
 
 24.7.17(late correction)
 After some research in the library, I believe I found a proper way to connect the system and I think I managed to combine the mathematical and physical systems together using the block I created writing functions(as I described below in 24.7.17 before this last addition) I put the inductances in random to be corrected with detailed one after I confirm that this model works well.
