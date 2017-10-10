@@ -4,48 +4,10 @@
 GaN Modelling-Analysis Research League
 (New additions appearing on top)
 
-24.7.17
-I arranged the blocks to their final position with the corresponding GaNFEt values that we are going to use(the ordered GaN parameters)and I was correcting the errors yet I had an error saying that an if block can only be connected to one action subblock not more than one. Does this mean that I can not create nested if block in Simulink? If so, shame! This would be so helpful for me to create the model!
+All Updated...
 
+After the "evi toparlayayım" part :D, I left 2 simulink models both of which do not work :D However, as Ozan Hoca mentioned, I will try to run the models part by part. One of the models is the oneI tried to build using the MATLAB function blocks to model the theoretical current voltage outputs of the MOSFET. That is, the unnecessary looking details since after talking to Mesut Hoca and my internship, I realized that MOSFET is merely a switch and there is not a fundamental need to model so painstakingly :D.
 
-24.7.17(late correction)
-After some research in the library, I believe I found a proper way to connect the system and I think I managed to combine the mathematical and physical systems together using the block I created writing functions(as I described below in 24.7.17 before this last addition) I put the inductances in random to be corrected with detailed one after I confirm that this model works well.
+The second model is the very fresh ("taptaze") version which I started after reading some more documents of modelling a MOSFET in Texas Instruments' document, which is also present in this GitHub folder, and this document certainly helped me to grasp the insides of MOSFET better with detailed but not too dull explanations of the parasitic elements and also different gate driver topologies, which is my second assignment. I believe this document presents some good formulas that can also be tested whether or not they are correct for GaN (or I do not know at the moment-which means another assignment maybe :D- maybe there are some formulas that are already existent for GaN).
 
-24.7.17
-Hocam şimdi ben bu modeli düzenledim ancak aklıma takılan çok önemli bir husus var ki bayağıdır içinden çıkamadım. Şöyle ki ben MOSFETi modellerken switching kısmı için bir matematiksel block yaratıyorum ve bu block içerisinde if blockları ile çalışıyor ve doğal olarak Id akımının bağlı olduğu constant Vt ve Kn ile değişken olan Vgs ve Vds değerlerini input olarak alıyor. Bu değerleri de doğal olarak fiziksel olan dünyadan yani elekriksel devreden alması gerekiyor.
-
-Ben de switch diye adlandırdığım matematik
-sel bloğu voltaj sensörleri ile bağlamayı amaçladım ancak switch diye düşündüğümüz arkadaş aslında fiziksel dünyada gerçekten drain ve source u birbirine bağlamakta. Ben bu şekilde herhangi bir connection yapamadığım için doğru bir model olamıyor ve sensörden aldığım bilgi de aslında arada asla bağlantı yokmuş gibi oluyor. (iki tarafa da  Id outputunu PS converter ile bağlamaya çalıştım ama olmadı.)
-  Öbür yandan basit bir switch ile modellemek istesem de şu sorunla karşılaşıyorum:iki farklı akım denklemi ve 3 farklı condition mevcut. Ben bu voltage dependent currentı library de var olan elemala yapamıyorum çünkü bu akım dependency i linear alıyor ve hazır kodu değişemiyorum. Ayriyeten bir fonksiyon bloğu yazmak istesem bu bloğa birden çok değişken alınca problem oluyor.
-
-  Nasıl bir çözüm önerirsiniz? Ben son modelimden memnunum ve onu fiziksel olan devreyle nasıl entegre edebilirm bunu merak ediyorum. Değişiklik  yaptığım M.stv modeline bakabilirseniz sevinirim.
-
-
-
-18.7.17
-Using "MOSFET model.png" I tried to create another model,
-Copying from th e source I work from:(Power electronics component matlab.pdf doc added)
-"Assumptions and Limitations
-The MOSFET block implements a macro model of the real MOSFET device. It does not take into account
-either the geometry of the device or the complex physical processes [1].
-Depending on the value of the inductance Lon, the MOSFET is modeled either as a current source (Lon >
-0) or as a variable topology circuit (Lon = 0). The MOSFET block cannot be connected in series with an
-inductor, a current source, or an open circuit, unless its snubber circuit is in use. See Improving
-Simulation Performance for more details on this topic.
-Use the Powergui block to specify either continuous simulation or discretization of your electrical circuit
-containing MOSFET blocks. When using a continuous model, the ode23tb solver with a relative tolerance
-of 1e-4 is recommended for best accuracy and simulation speed.
-The inductance Lon is forced to 0 if you choose to discretize your circuit."
-
-
-
-
-2.7.17
-I configured the model a little bit. Here I had the problem of configuration solver which I intend to solve later on. I used the parameters provided in the datasheet of GaN-FET site of which we will be using in our upcoming experiments.
-3.7.17
-Solver configuration is solved, there are two scopes two obtain both input voltage and output current. The output is wrong but will be worked upon later.
-4.7.17
-I added a function block for Id representation however there might be a wrong representation in the blocks. I will try to use another way for Id.
-18.7.17
-
-I tried to improve the other model as well but with little improvement. Somehow, I think, I am making a mistake connecting the elements and putting the function. Also this simulink function thing is a bit complicated since I need an if statement for the model. There are various types of function writing one of which is an "if block function writing". It did not work out well since it requires too many connections and making the model look complicated. Hence I am looking for something simple which will handle everything in one simple MATLAB function with if statements inside. However, I tried this and it looks not possibe this way. I am a little bit stuck at this point not knowing whether there is a simple way to do this.
+That's all after the first weekly meeting ^_^ (BTW I also added my internship report)
