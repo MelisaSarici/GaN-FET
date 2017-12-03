@@ -11,7 +11,7 @@ pf=0.9;
 fsw = 5000;         %Hz - PWM switching frequency for every inverter arm-switch
 
 
-Ic= Power/(Vac*sqrt(3)*(0.9/pf));    %A - Peak value of sinusoidal output current,taken wrt to 100kW active power of desired load 
+Ic= Power/(Vac*sqrt(3)*(0.9/pf))*sqrt(2);    %A - Peak value of sinusoidal output current,taken wrt to 100kW active power of desired load 
 Ie= Ic;           %A Icp=Iep
 Esw_on=20*1e-3;     %J - IGBT's turn-on switching energy per pulse at Ic (Icp, T=125C) found from curve
 Esw_off=15*1e-3;    %J - IGBT's turn-off switching energy per pulse at Ic (Icp, T=125C) found from curve
@@ -35,7 +35,7 @@ P_IGBT = Pss+Psw;                                        %Total loss per IGBT
 
  %Diode Loss
 
-Pdc=Ie*Vec*((1/8)-(m_a/(3*pi))*cos(phase_angle));%Steady-state loss per diode
+Pdc=Ie*Vec*((1/8)-(m_a/(3*pi))*pf);             %Steady-state loss per diode
 Prr=0.125*Irr*trr*Vce_peak*fsw;                  %Switcihng Loss per diode
 P_Diode=Pdc+Prr;         
 
