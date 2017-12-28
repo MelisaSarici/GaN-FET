@@ -34,10 +34,10 @@ Psw=(Esw_on+Esw_off)*fsw*(1/pi);                       %Switching Loss per switc
 
 
 % On State Loss when Vgs>0 
-    Prev1=Id^2*Rd_on;
+    Prev1=Id^2*Rd_on*((1/8)-(m_a/(3*pi))*pf);
 
 %off state loss when Vgs <0 extra loss
-    Prev2=Id^2*Rrev_on + Id*(Vgst+abs(Vgs_off));
+   Prev2=(Id^2*Rrev_on + Id*(Vgst+abs(Vgs_off)))*(0.01);
 
 
 %Total Loss
