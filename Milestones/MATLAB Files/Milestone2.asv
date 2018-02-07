@@ -51,7 +51,4 @@ efficiency = RePower/(RePower+Ptot);
 %% GRAPHS
 
 P=[Pss1 Psw1 Prevoff1 Poss1];
-pie(P );
-legend( {'conduction','switcing','dead time','capacitor loss'});
-title('Pie chart of GaN loss with %9805 efficiency');
-
+pie(P);
