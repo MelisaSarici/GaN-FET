@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetDataWorkspace>
+  <version>2.26.0.20</version>
+  <WSversion>10</WSversion>
+  <File>
+    <Name>C:\Users\syf.DESKTOP-JNMNU9A\Documents\GitHub\GaN-FET\Paper_GaN_Loss\A_topology\EonEoff.JPG</Name>
+    <Width>548</Width>
+    <Height>582</Height>
+  </File>
+  <Line>
+    <Caption>Line #1</Caption>
+    <LineColor>129,129,129</LineColor>
+    <BkColor>254,254,254</BkColor>
+    <PtColor>220,70,220</PtColor>
+    <LineType>0</LineType>
+    <Points MF="9">391,4918</Points>
+  </Line>
+  <Line>
+    <Caption>Line #2</Caption>
+    <LineColor>129,129,129</LineColor>
+    <BkColor>254,254,254</BkColor>
+    <PtColor>230,220,20</PtColor>
+    <LineType>0</LineType>
+    <Points MF="9">553,4675,571,4666,589,4648,607,4639,625,4630,643,4612,670,4594,688,4576,706,4567,715,4558</Points>
+    <Points MF="9">733,4549,751,4531,769,4522,787,4513,805,4504,823,4486,850,4468,877,4450,904,4423,931,4414</Points>
+    <Points MF="9">958,4387,994,4369,1021,4342,1048,4324,1066,4315,1093,4297,1102,4288,1120,4279,1138,4270,1147,4252</Points>
+    <Points MF="9">1174,4234,1192,4225,1210,4207,1228,4198,1246,4189,1264,4171,1282,4162,1291,4144,1309,4135,1327,4126</Points>
+    <Points MF="9">1345,4108,1363,4099,1381,4081,1399,4072,1417,4063,1426,4045,1453,4036,1471,4018,1480,4000,1498,3991</Points>
+    <Points MF="9">1516,3982,1525,3973,1543,3964,1552,3955,1561,3946,1570,3937,1579,3928,1588,3928,1597,3919,1606,3910</Points>
+    <Points MF="9">1624,3910,1624,3892,1633,3892,1642,3883,1660,3874,1669,3865,1678,3856,1696,3847,1714,3838,1723,3820</Points>
+    <Points MF="9">1750,3811,1768,3793,1786,3784,1795,3775,1804,3757,1813,3748,1831,3739,1840,3730,1858,3721,1867,3712</Points>
+    <Points MF="9">1885,3703,1894,3694,1903,3685,1912,3667,1930,3667,1939,3649,1957,3640,1966,3631,1975,3622,1984,3613</Points>
+    <Points MF="9">2002,3613,2002,3595,2020,3586,2029,3577,2047,3568,2056,3559,2065,3550</Points>
+  </Line>
+  <CurrentLine>1</CurrentLine>
+  <Xmin MF="9">382,4927,0.000000e+000</Xmin>
+  <Xmax MF="9">4594,4936,1.000000e+002</Xmax>
+  <Ymin MF="9">382,4927,0.000000e+000</Ymin>
+  <Ymax MF="9">382,166,2.000000e+001</Ymax>
+  <XScale>linear</XScale>
+  <YScale>linear</YScale>
+  <Position>519,351</Position>
+  <Zoom>
+    <Scale>200.0</Scale>
+  </Zoom>
+  <Digitize>
+    <IgnorePixels>1</IgnorePixels>
+    <LineIDMethod>2</LineIDMethod>
+  </Digitize>
+  <AutoTrace>
+    <TraceDistance>8</TraceDistance>
+    <SmoothLines>1</SmoothLines>
+  </AutoTrace>
+  <DigitizeArea>
+    <LineOrArea>0</LineOrArea>
+    <AreaType>1</AreaType>
+    <GridType>0</GridType>
+    <deltaX>2.00000000000000e-001</deltaX>
+    <deltaXUnits>1</deltaXUnits>
+    <GoThroughX>0.00000000000000e+000</GoThroughX>
+    <ShiftX>1</ShiftX>
+    <RotateAngle>0.000000</RotateAngle>
+    <dx>8.000000</dx>
+  </DigitizeArea>
+  <GridSettings>
+    <ShowGrid>0</ShowGrid>
+    <AreaType>0</AreaType>
+    <dx>15.000000</dx>
+    <dy>15.000000</dy>
+  </GridSettings>
+</GetDataWorkspace>
