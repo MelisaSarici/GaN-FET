@@ -1,5 +1,5 @@
-function Err = diode_sw(Id(n))
-
+function Err = diode_sw(Id)
+If=-Id;
 if (0<=If) && (If<3.8)
     Err=(0.83)/(3.8)*If;
 end
