@@ -24,16 +24,16 @@ for n=1:L
     if (Id(n)>1e-9  && n>1 && n<L) %meaning that IGBT is on operation
     
         if (Id(n-1)>-1e-9 && Id(n-1)<1e-9) %meaning that there is an on switching, the  swtiching period could take long
-            Eon=IGBT_sw(abs(Id(n)),'on')*1e-3; %J
+            Eon=IGBT_sw(Id(n),'on')*1e-3; %J
             Esw = Esw + Eon;
   
         elseif ((Id(n+1)>-1e-9 && Id(n+1)<1e-9) ) %meaning that there is an off switching, a decline in the current
-            Eoff=IGBT_sw(abs(Id(n)),'off')*1e-3; %j
+            Eoff=IGBT_sw(Id(n),'off')*1e-3; %j
             Esw = Esw + Eoff;
             
         else
-            Vds=IGBT_cond(Id(n));
-            Econd= Econd + Id(n)* Vds*Ts;
+           % Vds=IGBT_cond(Id(n));
+            Econd= Econd + Id(n)* Vds(n)*Ts;
         end
         
         
@@ -44,8 +44,8 @@ for n=1:L
             Edsw = Edsw + Edoff;
             
         else
-            Vds=diode_cond(Id(n));
-            Edcond= Edcond + abs(Id(n))* Vds*Ts;
+            %Vds=diode_cond(Id(n));
+            Edcond= Edcond + Id(n)* Vds(n)*Ts;
          end
     end
 end
@@ -69,7 +69,7 @@ E=[Esw Edsw Econd Edcond]*1000; %since the numbers are too low, multiplied by 10
 pie(E);
 legend([E(1), E(2), E(3), E(4)], 'IGBT switching loss','diode switching loss','IGBT conduction loss','diode conduction loss')
 
-title('I exp.- V data driven Loss Distribution IGBT inverter');
+title('I-V experimental Loss Distribution  IGBT inverter');
 
 
 
