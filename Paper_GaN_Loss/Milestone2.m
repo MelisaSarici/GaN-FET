@@ -3,12 +3,12 @@ close all
 
 %%
 
-RePower=2e3; %Total power at the output is 2kW
-Vac=140;        %The ac voltage is 140 V line to line rms
-Vdc=270 ;         % Voltage 
+RePower=8e3; %Total power at the output is 2kW
+Vdc=540*m ;         % Voltage 
+Vac=Vdc*m_a*0.612;        %The ac voltage is 140 V line to line rms
 Vgst=1.7; %typical threshold voltage
 pf=0.9;
-fsw = 200e3;         %Hz - PWM switching frequency for every inverter arm-switch
+fsw = 20e3;         %Hz - PWM switching frequency for every inverter arm-switch
 Vgs_off=0;  
 Vgs=6;
 

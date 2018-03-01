@@ -9,11 +9,9 @@ elseif (3.8<=If) && (If<20)
 elseif (20<=Id) && (If<35)
      Err=(3-2.15)/(35-20)*If;
 
-elseif (35<=Id) && (If<54.5)
-     Err=(3.74-3)/(54.5-35)*If;
-     
 else
-    
+     Err=(3.74-3)/(54.5-35)*If;
+       
 end
 
 end
