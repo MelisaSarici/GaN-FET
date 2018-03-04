@@ -8,7 +8,7 @@ ref_frequency = 2*pi*50; %radians per sec
 sw_frequency = 2050; %Hz
 Sampling_time = 1/(20*sw_frequency); %sampling frequency of the model
 Fs = 0.5/Sampling_time;  %Sampling Frequency for the spectrum analysis  %5e-6 goes up to 50kHz band
-stop_time = 0.0207; %duration of the model
+stop_time = 0.0201; %duration of the model
 %% Load&Source settings
 Load_Real_Power = 8000; %W
 Load_Power_Factor = 0.9; 
@@ -191,7 +191,7 @@ end
 % % % % % timelength = round((numel(twolevel_interleaved.get('DCLINK_voltage').time))*0.9);
 % % % % % maxvoltage = max(twolevel_interleaved.get('DCLINK_voltage').data(timelength:end));
 % % % % % minvoltage = min(twolevel_interleaved.get('DCLINK_voltage').data(timelength:end));
-% % % % % twolevel_DCRipple = maxvoltage - minvoltage;
+% % % % % twolevel_DCRipple = maxvoltagef - minvoltage;
 % % % % % ripplepercent = 100*twolevel_DCRipple/mean(twolevel_interleaved.get('DCLINK_voltage').data(timelength:end));
 % % % % % fprintf('Ripple Percent is: %d \n',ripplepercent)
 % % % % % fprintf('Vcrms value is: %d \n',mean(twolevel_interleaved.get('Vcrms').signals(1).values(timelength:end)));
@@ -201,20 +201,18 @@ end
 
 
 count = 1;
-for sw_frequency = 25050:1000:25050
+for sw_frequency = 1050:1000:25050
     capacitorsabiti = 200e-6*14000;
     DCLINK_Cap = 0.5*capacitorsabiti/sw_frequency;
     Sampling_time = 1/(20*sw_frequency); %sampling frequency of the model
     twolevel_interleaved = sim('twolevel_parallel.slx','SimulationMode','normal','AbsTol','1e-6','SaveState','on','StateSaveName','xout','SaveOutput','on','OutputSaveName','yout','SaveFormat', 'Dataset');
-                     
-    THDV_2level_IGBTIa1(count) = 100*twolevel_interleaved.get('THD_Ia1').data(end);
-  
-    freq(count,1:numel((1:N/2-1)*Fs/N)) = (1:N/2-1)*Fs/N;
+    Ids1(count,1:numel(twolevel_interleaved.get('Ids1').data)) = twolevel_interleaved.get('Ids1').data;        
+    
        
     count = count+1;
   
 end
-save('data','THDV_2level_IGBTIa1','freq');
+save('data','Ids1');
 
 
 

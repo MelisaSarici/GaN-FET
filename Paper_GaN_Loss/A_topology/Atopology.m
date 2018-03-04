@@ -1,11 +1,27 @@
-%% A TOPOLOGY (2 Level parallel) parameters
+%% A TOPOLOGY 
+clear all;
+close all;
 
-fsw=sw_frequency; %get from workspace of the saved data
-Id=Idtop;
+cd('C:\Users\syf.DESKTOP-JNMNU9A\Documents\GitHub\GaN-FET\Paper_GaN_Loss\A_topology');
+load('data_corrected');
+
 %%
-figure;
-plot(Id);
-L=length(Id);
+P_IGBT=zeros();
+P_diode=zeros();
+Pper=zeros();
+Ptotal=zeros();
+E=zeros();
+
+
+%% 
+
+for (satir=1:25)
+
+L=length(Id(satir,:));
+fsw=1050+(satir-1)*1000;
+Ts=1/(20*fsw);
+
+
 Esw=0;
 Eoff=0;
 Eon=0;
@@ -13,47 +29,42 @@ Edoff=0;
 Econd=0;
 Edcond=0;
 Edsw=0;
-P_IGBT=0;
-P_diode=0;
-Pper=0;
-Ptotal=0;
-Ts=Sampling_time;
+
 swon=0;
 swoff=0;
 swd=0;
 cond=0;
 dcond=0;
-%% 
 
 for n=1:L
-    if (Id(n)>1e-9  && n>1 && n<L) %meaning that IGBT is on operation
+    if (Id(satir,n)>0  && n>1 && n<L) %meaning that IGBT is on operation
     
-        if (Id(n-1)>-1e-9 && Id(n-1)<1e-9) %meaning that there is an on switching, the  swtiching period could take long
-            Eon=IGBT_sw(abs(Id(n)),'on')*1e-3; %J
+        if (Id(satir,n-1)==0) %meaning that there is an on switching, the  swtiching period could take long
+            Eon=IGBT_sw(abs(Id(satir,n)),'on')*1e-3; %J
             Esw = Esw + Eon;
             swon=swon+1;
   
-        elseif ((Id(n+1)>-1e-9 && Id(n+1)<1e-9) ) %meaning that there is an off switching, a decline in the current
-            Eoff=IGBT_sw(abs(Id(n)),'off')*1e-3; %j
+        elseif ((Id(satir,n+1)==0) ) %meaning that there is an off switching, a decline in the current
+            Eoff=IGBT_sw(abs(Id(satir,n)),'off')*1e-3; %j
             Esw = Esw + Eoff;
             swoff=swoff+1;
             
         else
-            Vds=GaN_cond(Id(n));
-            Econd= Econd + Id(n)* Vds*Ts;
+            Vds=IGBT_cond(Id(satir,n));
+            Econd= Econd + Id(satir,n)* Vds*Ts;
             cond=cond+1;
         end
         
         
-    elseif  (Id(n)<-1e-9 && n<L) %meaning that diode is on operation
+    elseif  (Id(satir,n)<0 && n<L) %meaning that diode is on operation
         
-        if ((Id(n+1)>-1e-9 && Id(n+1)<1e-9)) %meaning that there is an off switching, a decline in the current
-            Edoff=diode_sw(Id(n))*1e-3;
+        if ((Id(satir,n+1)==0)) %meaning that there is an off switching, a decline in the current
+            Edoff=diode_sw(Id(satir,n))*1e-3;
             Edsw = Edsw + Edoff;
             swd=swd+1;
             
         else
-            Vds=diode_cond(Id(n));
+            Vds=diode_cond(Id(satir,n));
             Edcond= Edcond + abs(Id(n))* Vds*Ts;
             dcond=dcond+1;
          end
@@ -62,31 +73,59 @@ end
 
 % IGBT Loss : Switching+Conduction(steady state)
 
-P_IGBT = (Esw+Econd)*50;       %Total loss per IGBT
+P_IGBT(satir) = (Esw+Econd)*50;       %Total loss per IGBT
 
 % Diode Loss : Condunction(ss) + Reverse Recovery
 
-P_diode = (Edsw + Edcond)*50;
+P_diode(satir) = (Edsw + Edcond)*50;
 
-%% Total Loss
 
-Pper=P_IGBT+P_diode;
-Ptotal=Pper*6;
+
+%%Total Loss
+
+Pper(satir)=P_IGBT(satir)+P_diode(satir);
+Ptotal(satir)=Pper(satir)*6;
+E(satir,1:4)=[Esw Econd Edsw Edcond];
+end
 
 %% Graphs
+
+%%
+% figure;
+% freq=(1.050:1:25.050);
+% plot(freq, Ptotal);
+% xlabel('frequency (kHz)');
+% ylabel('Loss (W)');
+% title('IGBT loss calculation vs frequency');
+% figure;
+% bar(E,'stacked');
+% legend('IGBT sw', 'IGBT cond', 'Diode sw', 'diode cond');
+% 
+% 
+
+        
+%subpot
 figure;
-E=[Esw Edsw Econd Edcond]*1000; %since the numbers are too low, multiplied by 1000
-pie(E);
-legend([E(1), E(2), E(3), E(4)], 'IGBT switching loss','diode switching loss','IGBT conduction loss','diode conduction loss')
+freq=(1.050:1:25.050);
+subplot(1,2,1);
+plot(freq, Ptotal, 'linewidth', 2);
+xlabel('frequency (kHz)');
+ylabel('Loss (W)');
+legend('Total Loss','Location','NorthWest')
+title('IGBT 2 level-single Topology Loss');
 
-title('I exp.- V data driven Loss Distribution IGBT inverter');
+subplot(1,2,2);
+bar(freq,E,'stacked');
+ylabel('E (joule) per transistor');
+xlabel('frequency (kHz)');
+xlim([0 26]);
+legend('IGBT sw', 'IGBT cond', 'Diode sw', 'diode cond','Location','NorthWest');
+title('Energy distribution');
 
-
-
+      
         
-
         
-    
+ 
    
         
         

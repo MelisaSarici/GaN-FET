@@ -2,10 +2,16 @@ cd('C:\Users\syf.DESKTOP-JNMNU9A\Documents\GitHub\mlv_inv\topologies to be evalu
 open_system('twolevel_parallel.slx');
 clear
 N = 2^11;
+freq=zeros();
+THDV_2level_IGBTIa1=ones(2,);
+
+for sw_frequency = 1050:1000:2050
+    
+    count = 1;
 %% values of the signals
 ma = 0.9;
 ref_frequency = 2*pi*50; %radians per sec
-sw_frequency = 2050; %Hz
+%sw_frequency = 2050; %Hz
 Sampling_time = 1/(20*sw_frequency); %sampling frequency of the model
 Fs = 0.5/Sampling_time;  %Sampling Frequency for the spectrum analysis  %5e-6 goes up to 50kHz band
 stop_time = 0.0207; %duration of the model
@@ -56,8 +62,12 @@ Xs = sqrt((Vln_rms^2-Ef^2)/Iline^2);
 %%
 Ls = n*Xs/ref_frequency; % n: number of interleaved inverters  
 % % % % % % DCLINK_Cap = 200e-6; %Farads
-capacitorsabiti = 200e-6*14000;
-DCLINK_Cap = capacitorsabiti/sw_frequency;
+
+    capacitorsabiti = 200e-6*14000;
+    DCLINK_Cap = 0.5*capacitorsabiti/sw_frequency;
+    
+%capacitorsabiti = 200e-6*14000;
+%DCLINK_Cap = capacitorsabiti/sw_frequency;
 Rin = 1; %ohm
 Vin = DC_Voltage_Source + Rin*(Load_Real_Power/DC_Voltage_Source);
 
@@ -200,22 +210,17 @@ end
 % % % % % 
 
 
-count = 1;
-for sw_frequency = 1050:1000:25050
-    capacitorsabiti = 200e-6*14000;
-    DCLINK_Cap = 0.5*capacitorsabiti/sw_frequency;
-    Sampling_time = 1/(20*sw_frequency); %sampling frequency of the model
+
     twolevel_interleaved = sim('twolevel_parallel.slx','SimulationMode','normal','AbsTol','1e-6','SaveState','on','StateSaveName','xout','SaveOutput','on','OutputSaveName','yout','SaveFormat', 'Dataset');
                      
-    THDV_2level_IGBTIa1(count) = 100*twolevel_interleaved.get('THD_Ia1').data(end);
+    THDV_2level_IGBTIa1(count,:) = 100*twolevel_interleaved.get('THD_Ia1').data(end);
   
-    freq(count,1:numel((1:N/2-1)*Fs/N)) = (1:N/2-1)*Fs/N;
+    freq(count) = sw_frequency;
        
     count = count+1;
-    fprintf('swf = %d , ripplepercent = %d , Capacitor size = %d',sw_frequency,ripplepercent,DCLINK_Cap);
-    fprintf('\n')
+  
 end
-save('THDV_2level_IGBTIa1','freq');
+save('data','THDV_2level_IGBTIa1','freq');
 
 
 

@@ -1,10 +1,10 @@
-%% A TOPOLOGY (2 Level parallel) parameters
+%% C TOPOLOGY
 
 clear all;
-close all;
+%close all;
 
 cd('C:\Users\syf.DESKTOP-JNMNU9A\Documents\GitHub\GaN-FET\Paper_GaN_Loss\E-CtopologyGaN');
-load('dataB_corrected');
+load('dataC_corrected');
 %%
 
 P_GaN_cond=zeros();
@@ -13,6 +13,7 @@ P_Coss=zeros();
 P_reverse_cond=zeros();
 Pper=zeros();
 Ptotal=zeros();
+Pmodule=zeros();
 E=zeros();
 
 %% 
@@ -20,7 +21,7 @@ E=zeros();
 for (satir=1:20)
 
 L=length(Id(satir,:));
-fsw=1050+(satir-1)*1000;
+fsw=1050+(satir-1)*5000;
 Ts=1/(20*fsw);
 
 
@@ -88,23 +89,49 @@ P_Coss(satir)=Eoss*50;
 %%Total Loss
 
 Pper(satir)=P_GaN_cond(satir)+P_reverse_cond(satir)+P_GaN_sw(satir)+P_Coss(satir);
-Ptotal(satir)=Pper(satir)*6;
+Pmodule(satir)=Pper(satir)*6;
+Ptotal(satir)=Pmodule(satir)*4;
 E(satir,1:4)=[Erevcond Esw Econd Eoss];
 end
 
 %% Graphs
+% figure;
+% freq=(1.050:5:100.050);
+% plot(freq, Ptotal, 'linewidth', 2);
+% hold on;
+% plot(freq,Pmodule,'linewidth', 2);
+% xlabel('frequency (kHz)');
+% ylabel('Loss (W)');
+% legend('Total Loss','Module Loss')
+% title('GaN 2 Series- 2 Parallel Topology Loss');
+% figure;
+% bar(E,'stacked');
+% legend('GaN revcond', 'Switch', 'Conduction', 'Coss');
+% title('Loss distribution');
+
+% Subplot
+
 figure;
 freq=(1.050:5:100.050);
-plot(freq, Ptotal);
+subplot(1,2,1);
+plot(freq, Ptotal, 'linewidth', 2);
+hold on;
+plot(freq,Pmodule,'linewidth', 2);
 xlabel('frequency (kHz)');
 ylabel('Loss (W)');
-title('IGBT loss calculation vs frequency');
-figure;
-bar(E,'stacked');
-legend('GaN revcond', 'Switch', 'Conduction', 'Coss');
+legend('Total Loss','Module Loss','Location','NorthWest')
+title('GaN 2level/2 Series- 2 Parallel Topology Loss');
+hold off;
 
+subplot(1,2,2);
+bar(freq,E,'stacked');
+ylabel('E (joule) per transistor');
+xlabel('frequency (kHz)');
+xlim([-10 105]);
+legend('GaN revcond', 'Switch', 'Conduction', 'Coss','Location','NorthWest');
+title('Energy distribution');
 
-        
+      
 
         
     

@@ -3,7 +3,7 @@
 clear all;
 close all;
 
-cd('C:\Users\syf.DESKTOP-JNMNU9A\Documents\GitHub\GaN-FET\Paper_GaN_Loss\E-CtopologyGaN');
+cd('');
 load('dataB_corrected');
 %%
 
@@ -14,6 +14,25 @@ P_reverse_cond=zeros();
 Pper=zeros();
 Ptotal=zeros();
 E=zeros();
+
+
+%%
+figure;
+plot(Id);
+L=length(Id);
+Esw=0;
+Eoff=0;
+Eon=0;
+Eoss=0;
+Econd=0;
+P_GaN_cond=0;
+Pper=0;
+Ptotal=0;
+Ts=Sampling_time;
+swon=0;
+swoff=0;
+swrev=0;
+cond=0;
 
 %% 
 
@@ -27,15 +46,16 @@ Ts=1/(20*fsw);
 Esw=0;
 Eoff=0;
 Eon=0;
-Eoss=0;
+Edoff=0;
 Econd=0;
-Erevcond=0;
+Edcond=0;
+Edsw=0;
 
 swon=0;
 swoff=0;
-swrev=0;
+swd=0;
 cond=0;
-revcond=0;
+dcond=0;
 %%
 for n=1:L
     if (Id(satir,n)>0  && n>1 && n<L) %meaning that IGBT is on operation
@@ -81,7 +101,7 @@ end
 Eoss=swon*11e-6; %J
 
 P_GaN_cond(satir) = (Econd)*50;       %Total loss per IGBT
-P_reverse_cond(satir) = (Erevcond)*50;
+P_reverse_cond(satir) = (Erevsw + Erevcond)*50;
 P_GaN_sw(satir)= Esw*50;
 P_Coss(satir)=Eoss*50;
 
@@ -89,7 +109,7 @@ P_Coss(satir)=Eoss*50;
 
 Pper(satir)=P_GaN_cond(satir)+P_reverse_cond(satir)+P_GaN_sw(satir)+P_Coss(satir);
 Ptotal(satir)=Pper(satir)*6;
-E(satir,1:4)=[Erevcond Esw Econd Eoss];
+E(satir,1:5)=[Erevsw Erevcond Esw Econd Eoss];
 end
 
 %% Graphs
@@ -101,7 +121,7 @@ ylabel('Loss (W)');
 title('IGBT loss calculation vs frequency');
 figure;
 bar(E,'stacked');
-legend('GaN revcond', 'Switch', 'Conduction', 'Coss');
+legend('GaN revsw', 'GaN revcond', 'Switch', 'Conduction', 'Coss');
 
 
         

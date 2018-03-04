@@ -6,7 +6,7 @@ k_on=(80/15)*1e-6; %from the slope of two points
 k_off=(13.5/15)*1e-6; % This line was quite linear and could be extrapolated to origin
 
 if (strcmp(c,'on'))
-    y=Id*k_on; %uJ
+    y=Id*k_on; %J
 elseif (strcmp(c,'off'))
     y=Id*k_off; %J
 end
